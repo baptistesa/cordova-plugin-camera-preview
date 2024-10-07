@@ -15,6 +15,7 @@
 - (void) switchCamera:(CDVInvokedUrlCommand*)command;
 - (void) takePicture:(CDVInvokedUrlCommand*)command;
 - (void) setOnPictureTakenHandler:(CDVInvokedUrlCommand*)command;
+- (void) isCameraAvailable:(CDVInvokedUrlCommand*)command;
 
 - (void) invokeTakePicture:(CGFloat) maxWidth withHeight:(CGFloat) maxHeight;
 - (void) invokeTakePicture;

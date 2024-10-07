@@ -55,6 +55,10 @@ CameraPreview.stopCamera = function(onSuccess, onError){
   exec(onSuccess, onError, PLUGIN_NAME, "stopCamera", []);
 };
 
+CameraPreview.isCameraAvailable = function(onSuccess, onError){
+  exec(onSuccess, onError, PLUGIN_NAME, "isCameraAvailable", []);
+};
+
 CameraPreview.takePicture = function(dim, onSuccess, onError){
   dim = dim || {};
   exec(onSuccess, onError, PLUGIN_NAME, "takePicture", [dim.maxWidth || 0, dim.maxHeight || 0]);

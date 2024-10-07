@@ -97,6 +97,23 @@
   [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
+- (void) isCameraAvailable:(CDVInvokedUrlCommand*)command {
+    CDVPluginResult *pluginResult = nil;
+
+    if ([self isCameraAvailableCheck]) {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Camera is available."];
+    } else {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Camera not available on this device."];
+    }
+
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+- (BOOL) isCameraAvailableCheck {
+    NSArray *videoDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    return videoDevices.count > 0;
+}
+
 - (void) showCamera:(CDVInvokedUrlCommand*)command {
   NSLog(@"showCamera");
   CDVPluginResult *pluginResult;
