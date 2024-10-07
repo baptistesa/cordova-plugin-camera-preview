@@ -19,6 +19,8 @@ import android.widget.RelativeLayout;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
+import javax.swing.text.View;
+
 public class CameraActivity extends Fragment {
     private static final int FLASH_OFF = 0;
     private static final int FLASH_ON = 1;
@@ -431,11 +433,9 @@ public class CameraActivity extends Fragment {
                     }
 
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                    picture.compress(Bitmap.CompressFormat.JPEG, 85, byteArrayOutputStream);
+                    picture.compress(Bitmap.CompressFormat.JPEG, 75, byteArrayOutputStream);
                     byte[] byteArray = byteArrayOutputStream.toByteArray();
-
-                    String encodedImage = Base64.encodeToString(byteArray, Base64.NO_WRAP);
-
+                    String encodedImage = "data:image/jpeg;base64," + Base64.encodeToString(byteArray, Base64.DEFAULT);
                     eventListener.onPictureTaken(encodedImage);
                     canTakePicture = true;
                 }
