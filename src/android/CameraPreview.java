@@ -57,8 +57,11 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
         } else if (isCameraAvailableAction.equals(action)) {
             if (!isCameraAvailable()) {
                 callbackContext.error("Camera not available on this device.");
-                return false;
+            } else {
+                callbackContext.success();
             }
+
+            return true;
         } else if (startCameraAction.equals(action)) {
             if (cordova.hasPermission(permission)) {
                 return startCamera(args, callbackContext);
